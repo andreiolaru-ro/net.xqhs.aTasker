@@ -11,26 +11,57 @@
  ******************************************************************************/
 package testing;
 
+import java.awt.Label;
+import java.awt.Point;
+
+import javax.swing.JFrame;
+
+import net.xqhs.graphical.GCanvas;
+import net.xqhs.graphical.GConnector;
+import net.xqhs.graphical.GContainer;
+import net.xqhs.graphical.GElement;
 import net.xqhs.util.logging.UnitComponent;
 
 /**
  * Project testing
  * 
  * @author Andrei Olaru
- *
+ * 
  */
 public class Tester
 {
+	/**
+	 * The name of the underlying unit.
+	 */
+	static String unitName = "TT";
 	
 	/**
-	 * @param args : command-line arguments
+	 * @param args
+	 *            : command-line arguments
 	 */
 	public static void main(String[] args)
 	{
-		UnitComponent log = (UnitComponent) new UnitComponent().setUnitName("TT");
+		UnitComponent log = (UnitComponent) new UnitComponent().setUnitName(unitName);
 		log.lf("starting");
+		
+		JFrame frame = new JFrame(unitName);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(new Label("hello. i am an accessory window."));
+		
+		GCanvas canvas = new GCanvas();
+		frame.add(canvas);
+		frame.setLocation(1500, 200);
+		frame.setSize(500, 500);
+		
+		frame.setVisible(true);
+		
+		GElement el1 = new GElement().setCanvas(canvas).setMoveTo(new Point(10, 0));
+		GElement el2 = new GElement().setCanvas(canvas).setMoveTo(new Point(0, 10));
+		new GConnector().setFrom(el1).setTo(el2).setCanvas(canvas);
+		new GContainer().setSize(100, 100).addReferencingElement(el1).addReferencingElement(el2).setCanvas(canvas);
+		
 		log.lf("exiting");
 		log.doExit();
+		
 	}
-	
 }

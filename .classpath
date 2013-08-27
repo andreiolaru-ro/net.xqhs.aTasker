@@ -5,5 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/Config.jar"/>
 	<classpathentry kind="lib" path="lib/Logging.jar"/>
+	<classpathentry kind="lib" path="lib/Gel.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
