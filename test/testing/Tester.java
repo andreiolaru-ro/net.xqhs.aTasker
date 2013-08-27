@@ -20,7 +20,7 @@ import net.xqhs.graphical.GCanvas;
 import net.xqhs.graphical.GConnector;
 import net.xqhs.graphical.GContainer;
 import net.xqhs.graphical.GElement;
-import net.xqhs.util.logging.UnitComponent;
+import net.xqhs.util.logging.Unit;
 
 /**
  * Project testing
@@ -28,21 +28,33 @@ import net.xqhs.util.logging.UnitComponent;
  * @author Andrei Olaru
  * 
  */
-public class Tester
+public class Tester extends Unit
 {
 	/**
 	 * The name of the underlying unit.
 	 */
-	static String unitName = "TT";
+	static String	unitName	= "TT";
 	
 	/**
-	 * @param args
-	 *            : command-line arguments
+	 * Testing caller.
 	 */
-	public static void main(String[] args)
+	protected void init()
 	{
-		UnitComponent log = (UnitComponent) new UnitComponent().setUnitName(unitName);
-		log.lf("starting");
+		this.setUnitName(unitName);
+		lf("starting testing");
+		
+		libTesting();
+		
+		lf("exiting");
+		doExit();
+	}
+	
+	/**
+	 * Tests correct inclusion of external functionality.
+	 */
+	public void libTesting()
+	{
+		lf("testing Gel");
 		
 		JFrame frame = new JFrame(unitName);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,9 +71,14 @@ public class Tester
 		GElement el2 = new GElement().setCanvas(canvas).setMoveTo(new Point(0, 10));
 		new GConnector().setFrom(el1).setTo(el2).setCanvas(canvas);
 		new GContainer().setSize(100, 100).addReferencingElement(el1).addReferencingElement(el2).setCanvas(canvas);
-		
-		log.lf("exiting");
-		log.doExit();
-		
+	}
+
+	/**
+	 * @param args
+	 *            : command-line arguments
+	 */
+	public static void main(String[] args)
+	{
+		new Tester().init();
 	}
 }
