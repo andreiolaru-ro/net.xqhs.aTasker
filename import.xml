@@ -22,6 +22,9 @@
 	<target name="Gel">
 		<copy file="../${import-directory}/net.xqhs.Gel/deploy/Gel.jar" todir="lib/" />
 	</target>
-		
-	<target name="import" depends="Logging, Config, Gel" />
+	<target name="Graphs">
+		<copy file="../${import-directory}/net.xqhs.Graphs/deploy/Graphs.jar" todir="lib/" />
+	</target>
+			
+	<target name="import" depends="Logging, Config, Gel, Graphs" />
 </project>
