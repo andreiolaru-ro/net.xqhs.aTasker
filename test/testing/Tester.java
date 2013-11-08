@@ -62,7 +62,7 @@ public class Tester extends Unit
 		
 		GCanvas canvas = new GCanvas();
 		frame.add(canvas);
-		frame.setLocation(1500, 200);
+		frame.setLocation(100, 200);
 		frame.setSize(500, 500);
 		
 		frame.setVisible(true);

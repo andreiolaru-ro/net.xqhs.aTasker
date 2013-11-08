@@ -13,5 +13,5 @@ package net.xqhs.atasker.core;
 
 public class Interval
 {
-	// TODO
+	// TODO> vague limits; only days; only weeks, etc
 }
